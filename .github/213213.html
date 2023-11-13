@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>네이버지도 스틱코드</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=gmmjriqc4y"></script>
+</head>
+<style>
+     #container {
+            background-color: gray;
+            width: 1500px;
+            height: 600px;
+            border: 2px solid blue;
+            margin: 0 auto; /* container 영역을 브라우저에서 가운데 정렬하기 위해 auto설정 */
+            text-align: center; /* inline-block화 된 div들을 텍스트 마냥 center로 정렬*/
+        }
+</style>
+<body>
+    <div id="container">
+        <div id="BON" style="width: 200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"  ></div>
+        <div id="map1" style="width:200px; height: 150px; float: left ;  margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="map2" style="width:200px; height: 150px; float: left ;  margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="map3" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="map4" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="map5" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="map6" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+    </div>
+    
+    
+    <script>
+        
+        var map = new naver.maps.Map('BON', {
+            center: new naver.maps.LatLng(36.83925, 127.1859), // 백석대학교 본부동
+            zoom: 17
+        });
+
+
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83925, 127.1859),
+            map: map
+        });
+
+        
+        var map1 = new naver.maps.Map('map1', {
+            center: new naver.maps.LatLng(36.83902, 127.1857), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker1 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83902, 127.1857),
+            map: map1
+        });
+
+        var map2 = new naver.maps.Map('map2', {
+            center: new naver.maps.LatLng(36.83902, 127.1857), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker2 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83902, 127.1857),
+            map: map1
+        });
+
+        var map3 = new naver.maps.Map('map3', {
+            center: new naver.maps.LatLng(36.83902, 127.1857), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker3 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83902, 127.1857),
+            map: map1
+        });
+
+        var map4 = new naver.maps.Map('map4', {
+            center: new naver.maps.LatLng(36.83902, 127.1857), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker4 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83902, 127.1857),
+            map: map1
+        });
+
+        var map5 = new naver.maps.Map('map5', {
+            center: new naver.maps.LatLng(36.83902, 127.1857), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker5 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83902, 127.1857),
+            map: map1
+        });
+
+        var map6 = new naver.maps.Map('map6', {
+            center: new naver.maps.LatLng(36.83902, 127.1857), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker6 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83902, 127.1857),
+            map: map1
+        });
+    </script>
+
+</body>
+</html>
