@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>네이버지도 스틱코드</title>
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=gmmjriqc4y"></script>
+    <style>
+        #container {
+            background-color: white;
+            width: 1500px;
+            height: 1000px;
+            border: 2px solid black;
+            margin: auto;
+            text-align: center;
+        }
+
+        .map {
+            width: 200px;
+            height: 150px;
+            float: left;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img style="width:100%; height:100%; object-fit:contain;" src="https://www.bu.ac.kr/sites/web/images/main_v_autumn_2.jpg">
+    <div id="container">
+        <div id="본부동" class="map"></div>
+        <div id="진리관" class="map"></div>
+        <div id="목양관" class="map"></div>
+        <div id="지혜관" class="map"></div>
+        <div id="조형관" class="map"></div>
+        <div id="체육관" class="map"></div>
+        <div id="예술동" class="map"></div>
+        <div id="기숙사" class="map"></div>
+        <div id="승리관" class="map"></div>
+        <div id="백석홀" class="map"></div>
+        <div id="창조관" class="map"></div>
+        <div id="음악관" class="map"></div>
+        <div id="글로벌외식산업관" class="map"></div>
+        <div id="학술정보관" class="map"></div>
+        <div id="교수회관" class="map"></div>
+        <div id="자유관" class="map"></div>
+        <div id="인성관" class="map"></div>
+        <div id="복지동" class="map"></div>
+        <div id="은혜관" class="map"></div>
+        <div id="주차장" class="map"></div>
+    </div>
+
+    <script>
+        function createMap(id, center, infoContent) {
+            let map = new naver.maps.Map(id, {
+                center: center,
+                zoom: 18
+            });
+
+            let marker = new naver.maps.Marker({
+                position: center,
+                map: map
+            });
+
+            let infowindow = new naver.maps.InfoWindow({
+                content: infoContent
+            });
+
+            marker.addListener('mouseover', function () {
+                infowindow.open(map, marker);
+            });
+
+            marker.addListener('mouseout', function () {
+                infowindow.close();
+            });
+
+            marker.addListener('click', function () {
+                window.location.href = id + '.html';
+            });
+        }
+
+        const locations = {
+            '본부동': [36.83925, 127.1859, '본부동입니다'],
+            '진리관': [36.84020, 127.1846, '진리관입니다'],
+            '목양관': [36.84093, 127.1838, '목양관입니다'],
+            '지혜관': [36.83877, 127.1844, '지혜관입니다'],
+            '조형관': [36.84087, 127.1884, '조형관입니다'],
+            '체육관': [36.84131, 127.1873, '체육관입니다'],
+            '예술동': [36.83880, 127.1875, '예술동입니다'],
+            '기숙사': [36.8424992, 127.1851113, '기숙사입니다'],
+            '승리관': [36.84174, 127.1858, '승리관입니다'],
+            '백석홀': [36.83963, 127.1827, '백석홀입니다'],
+            '창조관': [36.8397150, 127.1847912, '창조관입니다'],
+            '음악관': [36.84011, 127.1853, '음악관입니다'],
+            '글로벌외식산업관': [36.83750, 127.1851, '외식산업관입니다'],
+            '학술정보관': [36.83790, 127.1840, '학술정보관입니다'],
+            '교수회관': [36.83972, 127.1848, '교수회관입니다'],
+            '자유관': [36.83854, 127.1833, '자유관입니다'],
+            '인성관': [36.83939, 127.183510, '인성관입니다'],
+            '복지동': [36.8405863, 127.1824932, '복지동입니다'],
+            '은혜관': [36.83867, 127.1821, '은혜관입니다'],
+            '주차장': [36.84068, 127.1864, '주차장입니다']
+        };
+
+        const keys = Object.keys(locations);
+        for (let i = 0; i < keys.length; i++) {
+            const id = keys[i];
+            const [lat, lng, content] = locations[id];
+            createMap(id, new naver.maps.LatLng(lat, lng), content);
+}
+    </script>
+
+</body>
+
+</html>
