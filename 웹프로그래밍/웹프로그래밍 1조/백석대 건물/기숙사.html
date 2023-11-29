@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            text-align: center;
+        }
+        th,td {
+            border : 1px solid #444444
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width:1000px; height: 1000px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861639739100.jpg">
+    </div>
+    <div style="width:600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 100px ; margin-top : 1px; margin-bottom : 1px;">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                백석생활관
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>층수</th>
+                    <th style="background-color:#00aaff;">주요시설</th>
+               
+                </tr>
+                <tr>
+
+                    <th>1층</th>
+                    <td style="font-size: 25px;">식당, 로비, 휘트니스센터, 탁구장, 당구장</td>
+                    
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="2" style="background-color: white; font-size: 25px">오시는 길 - 도보 : 백석대학교 정문 출입 후 좌측으로 통행 후 목양관에서 풋살장으로 도보 후 직진<br>차량 : 백석대학교 정문 출입 후 좌측으로 직진 후 진리관을 지나 본부동 B2층 출입 구 기준으로 좌회전 후 직진, 다시 자회전 후 주차장에 주차</td>
+        
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <th >2층</th>
+                    <td style="font-size: 24px;">GS25, 이디야, 공동취사실, 컨퍼런스홀, 우편함, 택배실, 당구장</td>
+                    
+                </tr>
+                <tr>
+                       <td colspan="2" style="background-color: white; font-size: 25px; color:red">※주의사항 백석생활관 내부 생활관은 백성생활관생들만 출입가능, 엘리베이터도 동일</td>
+                </tr>
+                <tr>
+                    <th >3층<br>~6층</th>
+                    <td style="font-size: 25px;">남학생 생활관</td>
+                </tr>
+                <tr>
+                    <th>7층<Br>~14층</th>
+                    <td style="font-size: 25px;">여학생 생활관</td>
+                </tr>
+               
+            </tbody>
+        </table>
+        <p>자세한 내용 참고 : <a href="https://dormitory.bu.ac.kr/main.php" target="_blank" rel="기숙사 홈페이지 바로가기">기숙사 홈페이지</a></p>
+    </div>
+
+    <div style="margin-top: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+</body>
+<script>
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.location.href = "../최적화 후 좌표.html";
+    }
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            text-align: center;
+        }
+        th,td {
+            border : 1px solid #444444
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width:900px; height: 900px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861426542100.jpg">
+    </div>
+    <div style="width:600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 100px ; margin-top : 1px; margin-bottom : 1px;">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                학생복지관
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>층수</th>
+                    <th style="background-color:#00aaff;">주요시설</th>
+                </tr>
+                <tr>
+                    <th>B1층</th>
+                    <td style="font-size: 25px;">식당 - 밀겨울, 복사점</td>
+                </tr>
+                <tr>
+                    <th>1층</th>
+                    <td style="font-size: 25px;">ATM</td>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="2" style="background-color: white; font-size: 25px">오시는 길 - 백석대학교 정문에서 직진-백석홀방향 좌회전 - 처음사거리에서 좌회전 - 학생복지관</td>
+                </tr>
+               
+            </tfoot>
+            <tbody>
+                <tr>
+                    <th >2층</th>
+                    <td style="font-size: 24px;">사진관, 편의점 - 세븐일레븐</td>    
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: white; font-size: 25px; color:red">※주의사항 : 그 외의 장소는 학부 학생회실, 동아리실로 구성<br>엘리베이터 X</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-top: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+
+</body>
+<script>
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.location.href = "../최적화 후 좌표.html";
+    }
+</script>
+
+</html>
