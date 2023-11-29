@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>게임</title>
+  <link rel="stylesheet" href="Recommend.css">
+  <style>
+    input {
+      width: 80px;
+      height: 35px;
+      font-size: 25px;
+      border-radius: 5px;
+    }
+    button {
+      width: 100px;
+      height: 50px;
+      font-size: 30px;
+      border: 0;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #main {
+      text-align: center;
+    }
+    #game_title {
+      font-size: 60px;
+      padding-bottom: 70px;
+      text-align: center;
+      margin: 0;
+    }
+    #result {
+      color: rgb(231, 122, 100);
+      font-size: 60px;
+    }
+    .name {
+      margin-left: 10px;
+    }
+    #modal_popup {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal_content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 40px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      width: 30%;
+      font-size: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="leftButton">
+    <button id="otherType">
+      <a href="index.html">이전 화면</a>
+    </button>
+  </div>
+  <p id="game_title">커피 값 내기</p>
+  
+  <div id="main">
+    <h1>참가 인원을 입력해주세요</h1>
+    <h1>인원 수 : <input type="number" id="count"></h1>
+    <div id="nameInputs"></div>
+    <br>
+    <button onclick="startGame()">시작</button>
+    <button onclick="stopGame()">정지</button>
+    <button onclick="restartGame()">다시</button>
+    <p><span id="result"></span></p>
+  </div>
+
+  <div id="modal_popup">
+    <div class="modal_content">
+      <span id="modalMessage"></span><br><br>
+      <button onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+</body>
+<script>
+  const names = [];
+  let interval;
+  const countInput = document.getElementById("count");
+  const nameInputsContainer = document.getElementById("nameInputs");
+  const modalPopup = document.getElementById("modal_popup");
+  const modalMessage = document.getElementById("modalMessage");
+
+  countInput.addEventListener("input", function () {
+    const count = parseInt(countInput.value);
+
+    while (nameInputsContainer.firstChild) {
+      nameInputsContainer.removeChild(nameInputsContainer.firstChild);
+    }
+    
+    for (var i = 0; i < count; i++) {
+      var nameInput = document.createElement("input");
+      nameInput.setAttribute("class", "name");
+      nameInput.setAttribute("placeholder", "이름 " + (i + 1));
+      nameInputsContainer.appendChild(nameInput);
+    }
+  });
+
+  const calculateCoffeeCost = (count) => {
+    const coffeePrice = 4000;
+    const totalCost = coffeePrice * count;
+    return totalCost;
+  }
+
+  const startGame = () => {
+    const countInput = document.getElementById("count");
+    const nameInputs = document.getElementsByClassName("name");
+
+    const count = parseInt(countInput.value);
+
+    if (isNaN(count) || count <= 0) {
+      alert("옳바른 인원 수를 입력해주세요.");
+      return;
+    }
+
+    for (var i = 0; i < count; i++) {
+      names.push(nameInputs[i].value);
+    }
+
+    const result = document.getElementById("result");
+    var index = 0;
+    interval = setInterval(() => {
+      result.innerHTML = names[index];
+      index = (index + 1) % count;
+    }, 50);
+
+    const coffeeCost = calculateCoffeeCost(count);
+    showModal( "<br>참여 인원은 [ " + count  + " ] 명으로, " + "<br><br>커피값은 총 [ " + coffeeCost + " ] 원입니다.");
+  }
+
+  const stopGame = () => {
+    clearInterval(interval);
+    const result = document.getElementById("result");
+    const winnerName = result.innerHTML;
+    if (winnerName) {
+      setTimeout(() => {
+        showModal("<span style='color: rgb(231, 122, 100);'>" + winnerName + "</span>" + " 님께서 당첨되었습니다 !");
+      }, 400);
+    } else {
+      alert("게임이 시작되지 않았습니다.");
+    }
+  }
+
+  const showModal = (message) => {
+    modalMessage.innerHTML = message;
+    modalPopup.style.display = "block";
+  }
+
+  const closeModal= () => {
+    modalPopup.style.display = "none";
+  }
+
+  const restartGame = () => {
+    location.reload();
+  }
+</script>
+</html>

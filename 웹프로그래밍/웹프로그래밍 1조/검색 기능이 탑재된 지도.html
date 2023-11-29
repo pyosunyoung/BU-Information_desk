@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>네이버지도 스틱코드</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=gmmjriqc4y"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        #searchContainer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="장소 검색">
+        <button id="searchButton">검색</button>
+    </div>
+    <div id="map"></div>
+
+    <script>
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(36.83925, 127.1859),
+            zoom: 17
+        });
+
+        var markers = [
+            { position: new naver.maps.LatLng(36.83925, 127.1859), title: '본부동', content: '본부동에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84020, 127.1846), title: '진리관', content: '진리관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84093, 127.1838), title: '목양관', content: '목양관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83877, 127.1844), title: '지혜관', content: '지혜관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84087, 127.1884), title: '조형관', content: '조형관리관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84131, 127.1873), title: '체육관', content: '체육관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83880, 127.1875), title: '예술관', content: '예술관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.8424992, 127.1851113), title: '기숙사', content: '기숙사에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84174, 127.1858), title: '승리관', content: '승리관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83963, 127.1827), title: '백석홀', content: '백석홀에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83750, 127.1851), title: '글로벌외식산업관', content: '외식산업관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83790, 127.1840), title: '학술정보관', content: '학술정보관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83815, 127.18549), title: '스포츠센터', content: '스포츠센터에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83854, 127.1833), title: '자유관', content: '자유관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.83939, 127.183510), title: '인성관', content: '인성관에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84068, 127.1864), title: '주차장', content: '주차장에 대한 설명' },
+            { position: new naver.maps.LatLng(36.84011, 127.1853), title: '음악관', content: '음악관에 대한 설명' }
+        ];
+
+         for (var i = 0; i < markers.length; i++) {
+            createMarker(markers[i]);
+        }
+
+        function createMarker(markerInfo) {
+            var marker = new naver.maps.Marker({
+                position: markerInfo.position,
+                map: map,
+                title: markerInfo.title
+            });
+
+            var infowindow = new naver.maps.InfoWindow({
+                content: '<div style="padding:10px;"><strong>' + markerInfo.title + '</strong><br>' + markerInfo.content + '</div>'
+            });
+
+            naver.maps.Event.addListener(marker, 'mouseover', function() {
+                infowindow.open(map, marker);
+            });
+
+            naver.maps.Event.addListener(marker, 'mouseout', function() {
+                infowindow.close();
+            });
+        }
+
+        var searchInput = document.getElementById('searchInput');
+        var searchButton = document.getElementById('searchButton');
+        searchButton.addEventListener('click', function() {
+            var query = searchInput.value;
+
+            var matchedMarker = markers.find(function(marker) {
+                return marker.title === query;
+            });
+
+            if (!matchedMarker) {
+                alert('일치하는 장소를 찾을 수 없습니다.');
+                return;
+            }
+
+            var matchedMarkerPosition = matchedMarker.position;
+            var matchedMarkerInfowindow = new naver.maps.InfoWindow({
+                content: '<div style="padding:10px;"><strong>' + matchedMarker.title + '</strong><br>' + matchedMarker.content + '</div>'
+            });
+            matchedMarkerInfowindow.open(map, matchedMarkerPosition);
+        });
+
+    </script>
+</body>
+</html>
