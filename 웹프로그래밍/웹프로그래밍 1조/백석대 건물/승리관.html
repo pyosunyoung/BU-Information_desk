@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            text-align: center;
+        }
+
+        th,td {
+            border : 1px solid #444444
+        }
+        
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width:900px; height: 900px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861577960100.jpg">
+    </div>
+    <div style="width: 600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 30px ; margin-right : 30px ;margin-top : 1px; margin-bottom : 1px;">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                승리관
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th colspan="3" style="background-color:#00aaff;">주의사항</th>
+                    <!-- <th></th> -->
+                    <!-- <th></th> -->
+                </tr>
+
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="background-color: white">본 건물은 군사시설로 학군사관후보생(ROTC)들을 제외한 민간인들은 출입이 제한된다<div class=""></div></td>
+                    <!-- <td></td> -->
+                    <!-- <td></td> -->
+                    <!-- <td></td> -->
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white">백석대학교 정문에서 직진 - 은혜관사거리에서 좌회전 후 직진 - 학생복지관 사거리에서 좌회전 - 삼거리에서 우회전 - 삼거리에서 좌회전 - 승리관
+
+                        <div class=""></div></td>
+                    <!-- <td></td> -->
+                    <!-- <td></td> -->
+                    <!-- <td></td> -->
+                </tr>
+            </tfoot>
+            <tbody>                    
+                </tr>
+            </tbody>
+        </table>
+       </div>
+        <div style="margin-top: 20px; position: absolute;">
+            <button onclick="home()">처음으로 돌아가기</button>
+            <button onclick="prev()">이전 지도로 돌아가기</button>
+        </div>
+    
+</body>
+<script>
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.history.back();
+    }
+</script>
+</html>
