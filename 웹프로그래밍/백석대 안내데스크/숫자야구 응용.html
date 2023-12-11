@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구</title>
+</head>
+<style> 
+    #field {    
+        position:absolute; /* 위치고정 입력받은 것에 적용 x*/
+        top: 0px; 
+        left: 200px;
+        height: 700px;
+        width: 700px;
+        border-radius: 1% 100% 1% 1%; /* 모서리 부분 깎을 때 사용*/
+        background-color: green;
+        -webkit-transform: rotate(-45deg); /* 도형을 돌릴 때 사용  */
+    }
+    .base {
+        position:absolute; 
+        height: 20px;
+        width: 20px;
+        background-color: white;
+        -webkit-transform: rotate(-45deg);
+    }
+    .player { 
+        background-color: red; /* 선수 위치  */
+    }
+    #first {
+        top: 560px;
+        left: 760px;
+
+    }
+    #second {
+        top: 340px;
+        left: 540px;
+        
+    }
+    #third {
+        top: 560px;
+        left: 320px;
+        
+    }
+    #home {
+        top: 780px;
+        left: 540px;
+        
+    }
+</style>
+
+<body>
+    <div>
+    <form id="form">
+        <input type="text" id="input"> 
+        <button>확인</button>
+    </form>
+    <div id="logs">
+    </div>
+</div>
+<div>
+    <div id="field"></div>
+    <div id="first" class="base"></div>
+    <div id="second" class="base"></div>
+    <div id="third" class="base"></div>
+    <div id="home" class="base"></div>
+</div>
+</body>
+<script>
+    const MakeRandomInt = (min, max) => {
+        let value;
+        value = Math.floor(Math.random() * (max - min + 1)) + min;
+        return value;
+    }
+    const $input = document.querySelector('#input');
+    const $form = document.querySelector('#form');
+    const $logs = document.querySelector('#logs');
+    const $first = document.querySelector('#first');
+    // $first.classList.add('player') /* first베이스에다가 player css 추가한것  흰색 -> 빨간색으로 변경 add의 반대는 remove이다. */
+    const $second = document.querySelector('#second');
+    const $third = document.querySelector('#third');
+    const $home = document.querySelector('#home');
+
+
+    const numbers = [];
+    for (let n = 1; n <= 9; n += 1) {
+        numbers.push(n);
+    }
+    const answer = [];
+    for (let n = 0; n <= 3; n += 1) { // 네 번 반복
+        const index = Math.floor(Math.random() * numbers.length); // 0~8 정수
+        answer.push(numbers[index]);
+        numbers.splice(index, 1);
+    }
+    console.log(answer);
+    let over = false;
+    const tries = [];
+    function checkInput(input) {
+        if (input.length !== 4) { // 길이는 4가 아닌가
+            return alert('4자리 숫자를 입력해 주세요.');
+        }
+        if (new Set(input).size !== 4) { // 중복된 숫자가 있는가
+            return alert('중복되지 않게 입력해 주세요.');
+        }
+        if (tries.includes(input)) { // 이미 시도한 값은 아닌가
+            return alert('이미 시도한 값입니다.');
+        }
+        return true;
+    }
+    $form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (over) {
+            return;
+        }
+        const value = $input.value;
+        $input.value = '';
+        const valid = checkInput(value);
+        if (!valid) return;
+        if (answer.join('') === value) {
+            if (tries.length == 0) {
+                $logs.textContent = '홈런!';
+                $home.classList.add('player')
+            } else if (tries.length < 4) {
+                $logs.textContent = '3루타!';
+                $third.classList.add('player')
+            } else if (tries.length < 7) {
+                $logs.textContent = '2루타!';
+                $second.classList.add('player')
+            } else if (tries.length < 10) {
+                $logs.textContent = '1루타!';
+                $first.classList.add('player')
+            }
+            over = true; /* over는 게임이 끝난것  */
+            return;
+        }
+        if (tries.length >= 9) {
+            const message = document.createTextNode(`아웃 ${answer.join('')}`);
+            $logs.appendChild(message);
+            return;
+        }
+        let strike = 0;
+        let ball = 0;
+        // for (let i = 0; i < answer.length; i++) {
+        //     const index = value.indexOf(answer[i]);
+        //     if (index > -1) { // 일치하는 숫자 발견
+        //         if (index === i) { // 자릿수도 같음
+        //             strike += 1;
+        //         } else { // 숫자만 같음
+        //             ball += 1;
+        //         }
+        //     }
+        // }
+        answer.forEach((number, aIndex) => {
+            const index = value.indexOf(String(number));
+            if (index > -1) { // 일치하는 숫자 발견
+                if (index === aIndex) { // 자릿수도 같음
+                    strike += 1;
+                } else { // 숫자만 같음
+                    ball += 1;
+                }
+            }
+        });
+        $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
+        tries.push(value);
+
+    });
+</script>
+
+</html>

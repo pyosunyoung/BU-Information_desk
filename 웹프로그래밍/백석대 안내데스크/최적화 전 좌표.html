@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>네이버지도 스틱코드</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=gmmjriqc4y"></script>
+</head>
+<style>
+     #container {
+            background-color: white;
+            width: 1500px;
+            height: 1000px;
+            border: 2px solid black;
+            margin:  auto; /* container 영역을 브라우저에서 가운데 정렬하기 위해 auto설정 */
+            text-align: center; /* inline-block화 된 div들을 텍스트 마냥 center로 정렬*/
+            margin-top: auto;
+        }
+</style>
+<body>
+    <img style="width:100%; height:100%; object-fit:contain;" src="https://www.bu.ac.kr/sites/web/images/main_v_autumn_2.jpg"></img>
+    <div id="container">
+        <div id="본부동" style="width: 200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"  ></div>
+        <div id="진리관" style="width:200px; height: 150px; float: left ;  margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="목양관" style="width:200px; height: 150px; float: left ;  margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="지혜관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="조형관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="체육관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="예술동" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="기숙사" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="승리관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="백석홀" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="창조관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="예술음악관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="외식산업관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="학술정보관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="교수회관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="자유관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="인성관" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+        <div id="주차장" style="width:200px; height: 150px; float: left ; margin-top: 50px; margin-bottom: 50px; margin-left: 50px; margin-right: 50px;"></div>
+
+    </div>
+    
+    
+    <script>
+         const locations = {
+            '본부동': [36.83925, 127.1859, '본부동입니다'],
+            '진리관': [36.84020, 127.1846, '진리관입니다'],
+            '목양관': [36.84093, 127.1838, '목양관입니다'],
+            '지혜관': [36.83877, 127.1844, '지혜관입니다'],
+            '조형관': [36.84087, 127.1884, '조형관입니다'],
+            '체육관': [36.84131, 127.1873, '체육관입니다'],
+            '예술동': [36.83880, 127.1875, '예술동입니다'],
+            '기숙사': [36.8413125, 127.1872787, '기숙사입니다'],
+            '승리관': [36.84174, 127.1858, '승리관입니다'],
+            '백석홀': [36.83963, 127.1827, '백석홀입니다'],
+            '창조관': [36.83880, 127.1875, '창조관입니다'],
+            '예술음악관': [36.83900, 127.1874, '예술음악관입니다'],
+            '외식산업관': [36.83750, 127.1851, '외식산업관입니다'],
+            '학술정보관': [36.83790, 127.1840, '학술정보관입니다'],
+            '교수회관': [36.83815, 127.18549, '교수회관입니다'],
+            '자유관': [36.83854, 127.1833, '자유관입니다'],
+            '인성관': [36.83939, 127.183510, '인성관입니다'],
+            '주차장': [36.84068, 127.1864, '주차장입니다']
+        };
+        
+        var map = new naver.maps.Map('본부동', {
+            center: new naver.maps.LatLng(36.83925, 127.1859), // 백석대학교 본부동
+            zoom: 17
+        });
+
+
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83925, 127.1859),
+            map: map
+        });
+
+        var infowindow = new naver.maps.InfoWindow({
+            content: '본부동입니다'
+        });
+
+        marker.addListener('mouseover', function () {
+            infowindow.open(map, marker);
+        });
+
+        marker.addListener('mouseout', function () {
+            infowindow.close();
+        });
+
+        marker.addListener('click', function () {
+            window.location.href = '본부동.html';
+        });
+
+        
+        var map1 = new naver.maps.Map('진리관', {
+            center: new naver.maps.LatLng(36.84020, 127.1846), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker1 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.84020, 127.1846),
+            map: map1
+        });
+
+        var map2 = new naver.maps.Map('목양관', {
+            center: new naver.maps.LatLng(36.84093, 127.1838), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker2 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.84093, 127.1838),
+            map: map2
+        });
+
+        var map3 = new naver.maps.Map('지혜관', {
+            center: new naver.maps.LatLng(36.83877, 127.1844), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker3 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83877, 127.1844),
+            map: map3
+        });
+
+        var map4 = new naver.maps.Map('조형관', {
+            center: new naver.maps.LatLng(36.84087, 127.1884), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker4 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.84087, 127.1884),
+            map: map4
+        });
+
+        var map5 = new naver.maps.Map('체육관', {
+            center: new naver.maps.LatLng(36.84131, 127.1873), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker5 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.84131, 127.18737),
+            map: map5
+        });
+
+        var map6 = new naver.maps.Map('예술동', {
+            center: new naver.maps.LatLng(36.83880, 127.1875), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker6 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83880, 127.1875),
+            map: map6
+        });
+
+        var map7 = new naver.maps.Map('기숙사', {
+            center: new naver.maps.LatLng(36.8413125, 127.1872787), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker7 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.8413125, 127.1872787),
+            map: map7
+        });
+
+        var map8 = new naver.maps.Map('승리관', {
+            center: new naver.maps.LatLng(36.84174, 127.1858), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker8 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.84174, 127.1858),
+            map: map8
+        });
+
+        var map9 = new naver.maps.Map('백석홀', {
+            center: new naver.maps.LatLng(36.83963, 127.1827), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker9 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83963, 127.1827),
+            map: map9
+        });
+
+        var map10 = new naver.maps.Map('창조관', {
+            center: new naver.maps.LatLng(36.83880, 127.1875), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker10 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83880, 127.1875),
+            map: map10
+        });
+
+        var map11 = new naver.maps.Map('예술음악관', {
+            center: new naver.maps.LatLng( 36.83900, 127.1874), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker11 = new naver.maps.Marker({
+            position: new naver.maps.LatLng( 36.83900, 127.1874),
+            map: map11
+        });
+
+        var map12 = new naver.maps.Map('외식산업관', {
+            center: new naver.maps.LatLng( 36.83750, 127.1851), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker12 = new naver.maps.Marker({
+            position: new naver.maps.LatLng( 36.83750, 127.1851),
+            map: map12
+        });
+
+        var map13 = new naver.maps.Map('학술정보관', {
+            center: new naver.maps.LatLng( 36.83790, 127.1840), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker13 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83790, 127.1840),
+            map: map13
+        });
+
+        var map14 = new naver.maps.Map('교수회관', {
+            center: new naver.maps.LatLng(36.83815, 127.18549), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker14 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83815, 127.18549),
+            map: map14
+        });
+
+        var map15 = new naver.maps.Map('자유관', {
+            center: new naver.maps.LatLng(36.83854, 127.1833), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker15 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83854, 127.1833),
+            map: map15
+        });
+
+        var map16 = new naver.maps.Map('인성관', {
+            center: new naver.maps.LatLng(36.83939, 127.183510), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker16 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.83939, 127.183510),
+            map: map16
+        });
+
+        var map17 = new naver.maps.Map('주차장', {
+            center: new naver.maps.LatLng(36.84068, 127.1864), // 백석대학교 중심
+            zoom: 17
+            
+        });
+
+        var marker17 = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.84068, 127.1864),
+            map: map17
+        });
+    </script>
+
+</body>
+</html>

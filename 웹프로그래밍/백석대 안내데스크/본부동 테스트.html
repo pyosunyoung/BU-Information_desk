@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="searchInput" placeholder="장소 검색">
+    </form>
+    <button id="searchButton">검색</button>
+
+    <script>
+        const $input = document.getElementById('searchInput');
+        const $form = document.getElementById('form');
+
+        $form.addEventListener('submit', (event) => {
+            event.preventDefault(); // 폼의 기본 동작을 막음
+            const value = $input.value;
+            if (value === "본부동") {
+                window.location.href = "./백석대 건물/본부동.html";
+            }else if(value === "진리관"){
+                window.location.href = "./백석대 건물/진리관.html";
+            }
+            else {
+                alert("해당하는 장소를 찾을 수 없습니다.");
+            }
+        });
+        //입력해주시오 빈칸있나 없나 그것도 판단
+    </script>
+
+</body>
+
+</html>
