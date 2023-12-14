@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 900px;
+            text-align: center;
+        }
+        th,td {
+            border : 1px solid #444444
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width:900px; height: 900px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861445490100.jpg">
+    </div>
+    <div style="width:600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 100px ; margin-top : 1px; margin-bottom : 1px;", >
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                백석홀
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>구분</th>
+                    <th colspan="3" style="background-color:#00aaff;">주요시설</th>
+                    <!-- <th></th> -->
+                    <!-- <th></th> -->
+                </tr>
+                
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <th>지하</th>
+                    <td style="font-size: 25px;">대강당</td>
+                    
+                </tr>
+                <tr>
+                    <th>지상</th>
+                    <td style="font-size: 25px;">소강당</td>
+                    
+                </tr>
+        
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="background-color: white; color: red;">※각 학부마다 대강당, 소강당 위치가 다르니 아래 자료 참고
+                        <br>
+                        
+                    </td>
+                    
+                    <!-- <td></td> -->
+                    <!-- <td></td> -->
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white;">오시는 길 : 백석대학교 정문에서 직진-좌측에 백석홀</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white;">최적 경로 : 
+                        백석홀 ↔ 목양(약 5분), 백석홀 ↔ 조형,체육(약 15분)<br>
+                        백석홀 ↔ 진리(약 5분), 백석홀 ↔ 지혜(약 5분) <br>
+                        백석홀 ↔ 본부(약 10분), 수단(도보 기준) ※수강신청 시 참고
+                    </td>
+            </tfoot>
+        </table>
+        <label for="place">참고 자료</label>
+        <input type="text" list="places" id="place" name="place">
+        <button>버튼</button>
+
+        <datalist id="places">
+            <option value="대강당 좌석표"></option>
+            <option value="소강당 좌석표"></option>
+            <option value="학부별 시간 및 장소"></option>
+        </datalist>
+    </div>
+    <div style="margin-top: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+</body>
+<script>
+   const $button = document.querySelector('button');
+    const $input = document.querySelector('input');  
+    const list = ["대강당 좌석표", "소강당 좌석표"]
+    const onClickButton = () => {
+        const value = $input.value;
+        if(value == "대강당 좌석표") {
+            window.location.href = "대강당 좌석표.html"
+        }
+        else if(value == "소강당 좌석표"){
+            window.location.href = "소강당 좌석표.html"
+        } else if(value == "학부별 시간 및 장소"){
+            window.location.href = "학부별 시간 및 장소.html"
+        }
+         else {
+            alert('일치하지 않는 텍스트입니다.');
+        }
+        $input.value = ''; //버튼 눌렀을 때 텍스트 초기화
+    };
+    const onInput = (event) => {
+        console.log('글자 입력', event.target.value);
+    };
+    
+    $button.addEventListener('click', onClickButton);
+    $input.addEventListener('input', onInput);
+    
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.history.back();
+    }
+</script>
+</html>

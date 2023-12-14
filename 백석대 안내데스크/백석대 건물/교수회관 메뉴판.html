@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .talbe {
+            text-align: center;
+
+        }
+        th,td {
+            border : 1px solid #444444
+            
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-left: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+    <a href="교수회관 메뉴추천.html" style="margin-left: 80%; font-size: 40px;">교수회관 메뉴추천</a>
+    <div style="width:600px; height: 200%; border:1px;  font-size : 30px; margin-left : auto; margin-right : auto; margin-top : 0.5px; ">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                교수회관 메뉴판
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>오늘의 메뉴</th>
+                    <th colspan="3" style="background-color:#00aaff;">가격</th>
+                    <!-- <th></th> -->
+                    <!-- <th></th> -->
+                </tr>
+                
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <th>치 즈 돈 가 스 </th>
+                    <td style="font-size: 25px;">6000원</td>
+                    
+                </tr>
+                <tr>
+                    <th>고 구 마 돈 가 스</th>
+                    <td style="font-size: 25px;">6000원</td>
+                </tr>
+                <tr>
+                    <th>등 심 돈 가 스</th>
+                    <td style="font-size: 25px;">5500원</td>
+                    
+                </tr>
+                <tr>
+                    <th>수 육 보 쌈 정 식</th>
+                    <td style="font-size: 25px;">6000원</td>
+                </tr>
+                <tr>
+                    <th>돈 육 김 치 찌 개</th>
+                    <td style="font-size: 25px;">5500원</td>
+                    
+                </tr>
+                <tr>
+                    <th>알 밥 정 식</th>
+                    <td style="font-size: 25px;">5500원</td>
+                </tr>
+                <tr>
+                    <th>제 육 덮 밥</th>
+                    <td style="font-size: 25px;">5500원</td>
+                    
+                </tr>
+                
+                <tr>
+                    <th>햄 김 치 볶 음 밥</th>
+                    <td style="font-size: 25px;">5000원</td>
+                    
+                </tr>
+                
+                <tr>
+                    <th>뚝 배 기 불 고 기</th>
+                    <td style="font-size: 25px;">6000원</td>
+                    
+                </tr>
+                
+                <tr>
+                    <th>닭 강 정</th>
+                    <td style="font-size: 25px;">3500원</td>
+                </tr>
+
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="background-color: white;">이용 방법 : 본부동 진리관 사이 계단쪽 식당 입구 기준으로 들어가서 우측에서 식권 구매 후 음식 나오는 곳으로 이동 그리고 아주머니께 원하는 메뉴 말씀드린 후 플라스틱 통에 식권 제출</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white;">오시는 길 : 백석대학교 정문 - 좌측백석홀 방향 -사거리에서 우체국방향 우회전 - 우체국 뒤편에 교수회관</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+    </div>
+    
+</body>
+<script>
+    function home() {
+    window.location.href = "../../home.html";
+    }
+
+    function prev() {
+        window.history.back();
+    }
+</script>
+</html>
