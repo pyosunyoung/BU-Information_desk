@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            text-align: center;
+        }
+        th,td {
+            border : 1px solid #444444
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width:900px; height: 900px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861513534100.jpg">
+    </div>
+    <div style="width:600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 100px ; margin-top : 1px; margin-bottom : 1px;">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                예술동
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>층수</th>
+                    <th colspan="3" style="background-color:#00aaff;">주요시설</th>
+                    
+                </tr>
+                
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <th>1층</th>
+                    <td style="font-size: 25px;">복사기, 엘리베이터</td>
+                    
+                </tr>
+                <tr>
+                    <th>5층</th>
+                    <td style="font-size: 25px;">매점(월~목 10:30~16:30)</td>
+                    
+                </tr>
+                <tr>
+                    <th>7층</th>
+                    <td style="font-size: 25px;">복사기, 음악자료실(음악관련 자료 열람 및 대출 가능)</td>
+                    
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="background-color: white; color: red;">※주의사항 예술동은 조형관을 제외한 다른 어떠한 건물도 도보로 10분 안에 오갈 수 없다.
+                        <br>전동 킥보드 및 스쿠터 사용 추천
+                        
+                    </td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white;">오시는 길 : 백석대학교 정문에서 직진- 은혜관사거리에서 우회전 후 직진 - 우측에 도서관 지나 글로벌 외식산업관 지나면 예술대학동</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div style="margin-top: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+
+
+</body>
+<script>
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.history.back();
+    }
+</script>
+
+
+</html>

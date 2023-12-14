@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 820px;
+            text-align: center;
+        }
+        th,td {
+            border : 1px solid #444444
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width:900px; height: 900px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861465414100.jpg">
+    </div>
+    <div style="width:600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 100px ; margin-top : 1px; margin-bottom : 1px;">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                본부동
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>층수</th>
+                    <th colspan="3" style="background-color:#00aaff;">주요시설</th>
+                    
+                </tr>
+                <tr>
+                    
+                    <th>B1층</th>
+                    <td style="font-size: 25px;">본부동 도서관, 제1열람실, 제2열람실 <br>
+                    엘리베이터 좌우 1대, 중앙 5대</td>
+                </tr>
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <th>1층</th>
+                    <td style="font-size: 25px;">창업카페, ATM(신한, 국민, 농협) <br>
+                    무인발급기(성적확인서, 재학증명서 등), 휴대폰충전기 </td>
+                    
+                </tr>
+                <tr>
+                    <th>3층</th>
+                    <td style="font-size: 25px;">복사기</td>
+                    
+                </tr>
+                <tr>
+                    <th>6층</th>
+                    <td style="font-size: 25px;">CU편의점(7시 마감), 복사기(CU 앞)</td>
+                    
+                </tr>
+                <tr>
+                    <th>8층</th>
+                    <td style="font-size: 25px;">대학원</td>
+                    
+                </tr>
+                <tr>
+                    <th>11층</th>
+                    <td style="font-size: 25px;">연구실</td>
+                    
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="background-color: white;">*B2 스터디카페 운영X, 좌측 엘리베이터 1대</td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white;">오시는 길 : 백석문화대학교 정문에서 직진-처음사거리에서 좌회전-사거리에 우회전-백석대학교 본부동</td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: white;">최적 경로 : 
+                        본부 ↔ 진리(약 7분), 본부 ↔ 조형,체육(약 10분)<br>
+                        본부 ↔ 백석홀(약 10분), 본부 ↔ 지혜(약 10분) <br>
+                        본부 ↔ 목양(약 10분), 수단(도보 기준) ※수강신청 시 참고
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div style="margin-top: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+
+</body>
+<script>
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.history.back();
+    }
+</script>
+
+
+</html>

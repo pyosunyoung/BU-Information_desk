@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            text-align: center;
+        }
+        th,td {
+            border : 1px solid #444444
+
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top: 20px; position: absolute;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+
+    <div style="width: 1000px; height: 1000px; border:1px; float:left;">
+        <img style="width:100%; height: 100%; object-fit:contain;"
+            src="https://www.bu.ac.kr/sites/web/atchmnfl_mngr/campusMap/temp_1577861240960100.jpg">
+    </div>
+    <div style="width:600px; height: 200%; border:1px; float:left; font-size : 30px; margin-left : 100px ; margin-top : 1px; margin-bottom : 1px;">
+        <br><br><br><br>
+        <table class = 'table'>
+            
+            <colgroup>
+                <col style="background-color:#00aaff;">
+            </colgroup>
+            <caption style="text-align: center; font-size : 50px; margin-bottom: 10px;">
+                자유관
+            </caption>
+            <br>
+            <thead> 
+                <tr>
+                    <th>층수</th>
+                    <th colspan="3" style="background-color:#00aaff;">주요시설</th>
+                   
+                </tr>
+                
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <th>지하</th>
+                    <td style="font-size: 25px;"> cu편의점( 19:00까지),졸업준비위원회,총학회장실,입학관리저창고,총학회장실</td>
+                    
+                </tr>
+                <tr>
+                    <th>1층</th>
+                    <td style="font-size: 25px;">입학관리처,입학홍보팀,창의융합교육원,미래혁신교육원</td>
+                </tr>
+                <tr>
+                    <th>2층</th>
+                    <td style="font-size: 25px;">재무처장실,재무처,기획처,교육성과관리센터,총장실</td>
+                </tr>
+                <tr>
+                    <th>3층</th>
+                    <td style="font-size: 25px;">미디어 강의실,민간경비교육센터,평생교육원장실,</td>
+                </tr>
+                <tr>
+                    <th>4층</th>
+                    <td style="font-size: 25px;">여학생회복실, 디자인실습실,여행사실습실,광조제작실습실</td>
+                </tr>
+                <tr>
+                    <th>5층</th>
+                    <td style="font-size: 25px;">피부미용실습실,마케팅실습실,헤어실습실,메이크업 실습실 <br>연속간행물실</td>
+                </tr>
+                <tr>
+                    <th>6층</th> 
+                    <td style="font-size: 25px;"> 항공실습실,호텔레스토랑실습실,전산실습실</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    
+                        <br>
+                        
+                    </td>
+                    
+                   
+                </tr>
+                
+                <tr>
+                    <td colspan="4" style="background-color: white;">백석문화 대학교정문에서 직진  </td>
+                </tr>
+            </tfoot>
+        </table>
+    
+    </div>
+
+
+
+</body>
+<script>
+    function home() {
+        window.location.href = "../home.html";
+    }
+
+    function prev() {
+        window.history.back();
+    }
+</script>
+
+</html>

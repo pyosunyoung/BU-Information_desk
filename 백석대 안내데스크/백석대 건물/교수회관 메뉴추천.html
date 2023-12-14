@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #imageContainer {
+            width: 700px;
+            height: 700px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        #imageContainer img {
+            width: 100%;
+            height: 100%;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 15px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="imageContainer">
+        <img id="image">
+    </div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <p id="imagetext" style="font-size: 30px;"></p>
+    <div style="top: 20px; position: absolute; margin-left: 40%; width: 500px;">
+        <button onclick="home()">처음으로 돌아가기</button>
+        <button onclick="prev()">이전 지도로 돌아가기</button>
+    </div>
+    <script>
+        const menu = [
+            {
+                name: "치즈돈가스",
+                price: 6000,
+            },
+            {
+                name: "고구마돈가스",
+                price: 6000,
+            },
+            {
+                name: "등심돈가스",
+                price: 5500,
+            },
+            {
+                name: "수육보쌈정식",
+                price: 6000,
+            },
+            {
+                name: "돈육김치찌개",
+                price: 5500,
+            },
+            {
+                name: "알밥정식",
+                price: 5500,
+            },
+            {
+                name: "제육덮밥",
+                price: 5500,
+            },
+            {
+                name: "햄김치볶음밥",
+                price: 5000,
+            },
+            {
+                name: "뚝배기불고기",
+                price: 6000,
+            },
+            {
+                name: "닭강정",
+                price: 3500,
+            }];
+
+        let interval;
+        const $image = document.querySelector('#image');
+        const $start = document.querySelector('#start');
+        const $stop = document.querySelector('#stop');
+        const $imagetext = document.querySelector('#imagetext');
+        function changeimage() {
+            const index = Math.floor(Math.random() * menu.length);
+            const imageName = menu[index].name;
+            const imagePrice = menu[index].price;
+            $image.src = `../images2/${imageName}.jpg`;
+            $imagetext.textContent = `오늘 점심 메뉴로 ${imageName}을 추천합니다
+                                    ${imageName}의 가격은 ${imagePrice}원 입니다. `;
+        }
+        $start.addEventListener('click', () => {
+            if (!interval) {
+                interval = setInterval(changeimage, 1000);
+            }
+        })
+
+        $stop.addEventListener('click', () => {
+            if (interval) {
+                clearInterval(interval);
+                interval = 0;
+            }
+        });
+
+        function home() {
+            window.location.href = "../../home.html";
+        }
+
+        function prev() {
+            window.history.back();
+        }
+
+    </script>
+</body>
+
+</html>
