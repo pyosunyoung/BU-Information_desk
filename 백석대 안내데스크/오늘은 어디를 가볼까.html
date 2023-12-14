@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>캠퍼스 랜덤 투어</title>
+  <style>
+    input {
+      width: 140px;
+      height: 35px;
+      font-size: 18px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+      font-size: 25px;
+      border: 0;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #main {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .highlight {
+      background-color: #ff9999;
+    }
+
+    #des {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      text-align: center;
+      height: 600px;
+    }
+
+    #qwe {
+      font-size: 25px;
+    }
+
+    #map {
+      width: 450px;
+      height: 400px;
+      float: left;
+      margin-left: 15%;
+    }
+
+    #parkImage {
+      width: 450px;
+      height: 400px;
+      float: right;
+      margin-right: 15%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <h1>캠퍼스 랜덤 투어</h1>
+    <div id="nameInputs">
+      <input class="name" id="park1" value="베데스다 공원" readonly>
+      <input class="name" id="park2" value="글로벌 공원" readonly>
+      <input class="name" id="park3" value="백석 휴게 공원" readonly>
+    </div>
+    <br>
+    <button onclick="startTour()">시작</button>
+    
+    <p><span id="result"></span></p>
+
+    <div id="des">
+      <p id="parkdes">캠퍼스 랜덤 투어 결과</p>
+      <div id="map"></div>
+      <img id="parkImage">
+    </div>
+  </div>
+
+  <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=u9jx6coyzq"></script>
+  <script>
+    const resultElement = document.getElementById("result");
+    const desElement = document.getElementById("parkdes");
+    const mapElement = document.getElementById("map");
+    const imageElement = document.getElementById("parkImage");
+    const parkElements = [
+      { id: 'park1', value: '베데스다 공원', des: '진리관 앞쪽에 위치.', location: [127.1839, 36.84004], imageUrl: 'images/베데스다 공원.jpg' },
+      { id: 'park2', value: '글로벌 공원', des: '글로벌 외식관 앞쪽에 위치', location: [127.1855, 36.83812], imageUrl: 'images/글로벌 공원.jpg' },
+      { id: 'park3', value: '백석 휴게 공원', des: '조형관 앞쪽에 위치.', location: [127.1880, 36.84020], imageUrl: 'images/백석 휴게 공원.jpg' }
+    ];  
+
+    const startTour = () => {
+      parkElements.forEach(element => {
+        document.getElementById(element.id).classList.remove('highlight');
+      });
+
+      let countdown = 5;
+      resultElement.innerHTML = `<span id="qwe"> ${countdown}초 후에 공개합니다.`;
+
+      const cd1 = () => {
+        countdown--;
+        resultElement.innerHTML = `<span id="qwe"> ${countdown}초 후에 공개합니다.`;
+
+        if (countdown > 0) {
+          setTimeout(cd1, 1000);
+        } else {
+          showResult();
+        }
+      };
+
+      setTimeout(cd1, 1000);
+    };
+
+    const showResult = () => {
+      const randomIndex = Math.floor(Math.random() * parkElements.length);
+      const selectedPark = parkElements[randomIndex];
+
+      const map = new naver.maps.Map(mapElement, {
+        center: new naver.maps.LatLng(selectedPark.location[1], selectedPark.location[0]),
+        zoom: 16
+      });
+
+      const marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(selectedPark.location[1], selectedPark.location[0]),
+        map: map
+      });
+
+      resultElement.innerHTML = `<p id="qwe">${selectedPark.value}</p>`;
+      desElement.innerHTML = `<p id="qwe">${selectedPark.des}</p>`;
+      imageElement.src = selectedPark.imageUrl;
+      document.getElementById(selectedPark.id).classList.add('highlight');
+    };
+  </script>
+</body>
+
+</html>
