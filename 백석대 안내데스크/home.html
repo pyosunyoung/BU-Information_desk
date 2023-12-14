@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>백석대학교 안내데스크</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #00aaff;
+            color: white;
+        }
+
+        main {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            margin-bottom: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+            height: 900px;;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>백석대학교 안내데스크</h1>
+        <img src="https://www.bu.ac.kr/CrossEditor/binary/images/000110/1680164113195100.jpg">
+    </header>
+
+    <main>
+        <div class="buttons">
+            <button onclick="map()">캠퍼스 전체 찾아보기</button>
+            <button onclick="search()">장소 검색하기</button>
+            <button onclick="random()">오늘은 어디를 가볼까</button>
+        </div>
+    </main>
+
+    <script>
+        function map() {
+            window.location.href = "최적화 후 좌표.html";
+        }
+
+        function search() {
+            window.location.href = "검색 기능이 탑재된 지도.html";
+        }
+
+        function random() {
+            window.location.href = "오늘은 어디를 가볼까.html";
+        }
+    </script>
+
+</body>
+
+</html>
